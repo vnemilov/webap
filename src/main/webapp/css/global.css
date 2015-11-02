@@ -9,30 +9,27 @@ html, body{
 	margin-top:10px;
 	margin-right:3px;
 }
-#selectSize{
-	margin-top:6px;
+select{
+	
 }
 .oneRow{
+	margin-bottom:10px;
+	margin-right:25px;
 	clear:left;
 }
+#selectSizeAdidas, #selectSizeNike, #selectSizePuma{
+	margin-bottom:10px;
+}
 #gender{
-	width:85px;
-	height:30px;
+	width:175px;
 }
 #mainContainer{
 	height:350px;
 	padding:5px;
 }
 
-
-html body #mainContainer #dijit_layout_AccordionContainer_0 #gender_wrapper div.dijitAccordionChildWrapper{
-	height:120px !important;
-}
-html body #mainContainer #dijit_layout_AccordionContainer_0 #dijit_layout_ContentPane_1_wrapper div.dijitAccordionChildWrapper{
-	height:50px !important;
-}
-html body #mainContainer #dijit_layout_AccordionContainer_0 #dijit_layout_ContentPane_2_wrapper div.dijitAccordionChildWrapper{
-	height:25px !important;
+.oneRow{
+	float:left;
 }
 
 #first{

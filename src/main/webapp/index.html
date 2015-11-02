@@ -1,73 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<link rel='stylesheet'
-	href='webjars/dojo-src/1.10.0/dijit/themes/claro/claro.css' />
-<link rel='stylesheet' href="css/global.css" />
-<script>
-	dojoConfig = {
-		parseOnLoad : true,
-		isDebug : true,
-		packages : [ {
-			name : 'app',
-			location : location.pathname + 'app'
-		} ]
-	};
-</script>
-<script src="webjars/dojo-src/1.10.0/dojo/dojo.js"></script>
-<script>
-	require([ 'dojo/parser', 'app/views/First', 'dijit/form/TextBox' ]);
-</script>
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <link rel='stylesheet'
+          href='webjars/dojo-src/1.10.0/dijit/themes/claro/claro.css'/>
+    <link rel='stylesheet' href="css/global.css"/>
+    <script>
+        dojoConfig = {
+            parseOnLoad: true,
+            isDebug: true,
+            packages: [{
+                name: 'app',
+                location: location.pathname + 'app'
+            }]
+        };
+    </script>
+    <script src="webjars/dojo-src/1.10.0/dojo/dojo.js"></script>
+    <script>
+        require(['dojo/parser', 'app/views/First', 'dijit/form/TextBox']);
+    </script>
+    <script>
+    var testt = document.getElementById("Mike");
+    require(["dijit/form/CheckBox", "dojo/dom", "dojo/domReady!"], function(CheckBox, dom){
+    var checkBox = new CheckBox({
+    	
+        name: "checkBox",
+        value: "agreed",
+        checked: false,
+        onChange: function(b){ var node = dom.byId("women");
+        node.innerHTML = "hehehe";
+        if(testt.checked){
+        	alert("MUHAHAHA");
+        }
+        alert('onChange called with parameter = ' + b + ', and WOMEN tab has value: ' + node.innerHTML ); }
+    }, "checkBox").startup();
+    
+});</script>
+
+    <title>Insert title here</title>
 </head>
 <body class="claro">
-	<div data-dojo-type="dijit/layout/BorderContainer" id="mainContainer">
-		<div data-dojo-type="dijit/layout/ContentPane"
-			data-dojo-props="region: 'top'">TOP</div>
-		<div data-dojo-type="dijit/layout/AccordionContainer"
-			data-dojo-props="region: 'left'">
-			<div data-dojo-type="dijit/layout/ContentPane"
-				data-dojo-props="title: 'Men'" id="gender">
-					<div class="oneRow">
-						<div data-dojo-type="dijit/form/CheckBox" id="Adidas"></div>
-						<label id=adidas for="Adidas">Adidas</label>
-					</div>
-					<div class="oneRow">
-						<div data-dojo-type="dijit/form/CheckBox" id="Nike"></div>
-						<label id="nike" for="Nike">Nike</label>
-					</div>
-					<div class="oneRow">
-						<div data-dojo-type="dijit/form/CheckBox" id="Puma"></div>
-						<label id="puma" for="Puma">Puma</label>
-					</div>
-					<div class="oneRow">
-						<div data-dojo-type="dijit/form/CheckBox" id="Lacoste"></div>
-						<label id="lacoste" for="Lacoste">Lacoste</label> 
-					</div>
-					<label id="selector" for="selectSize">Size: </label>
-					<select name="select1" id="selectSize" data-dojo-type="dijit/form/Select">
-						<option value="32"selected="selected">32</option>
-						<option value="33">33</option>
-						<option value="34">34</option>
-						<option value="35">35</option>
-						<option value="36">36</option>
-						<option value="37">37</option>
-					</select>
-			</div>
-			<div data-dojo-type="dijit/layout/ContentPane"
-				data-dojo-props="title: 'Women'">bbbbbbb</div>
-			<div data-dojo-type="dijit/layout/ContentPane"
-				data-dojo-props="title: 'Kids'">ccccccc</div>
-		</div>
-	</div>
-	<div data-dojo-type="dijit/layout/ContentPane"
-		data-dojo-props="region: 'right'">
-		<div data-dojo-type="dijit/form/Button"></div>
-	</div>
-	<div data-dojo-type="dijit/layout/ContentPane"
-		data-dojo-props="region: 'bottom'">
-		<div data-dojo-type="dijit/form/HorizontalSlider"></div>
-	</div>
+<div data-dojo-type="dijit/layout/BorderContainer" id="mainContainer">
+    <div data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-props="region: 'top'">TOP
+    </div>
+    <div data-dojo-type="dijit/layout/AccordionContainer"
+         data-dojo-props="region: 'left'">
+        <div data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-props="title: 'Men'" id="gender">
+            <div class="oneRow">
+                <div data-dojo-type="dijit/form/CheckBox" id="Adidas"></div>
+                <label id=adidas for="Adidas">Adidas</label>
+            </div>
+               <select name="select1" id="selectSizeAdidas" data-dojo-type="dijit/form/Select">
+                <option value="small" selected="selected">small</option>
+                
+                <option value="large">large</option>
+            </select>
+            <div class="oneRow">
+                <input type="checkbox" data-dojo-type="dijit/form/CheckBox" id="Mike">
+                <label id="nike" for="Mike">Nike</label>
+            </div>
+            <select name="select1" id="selectSizeNike" data-dojo-type="dijit/form/Select">
+                <option value="small" selected="selected">small</option>
+                
+                <option value="large">large</option>
+            </select>
+            <div class="oneRow">
+                <div data-dojo-type="dijit/form/CheckBox" id="Puma"></div>
+                <label id="puma" for="Puma">Puma</label>
+            </div>
+               <select name="select1" id="selectSizePuma" data-dojo-type="dijit/form/Select">
+                <option value="small" selected="selected">small</option>
+                
+                <option value="large">large</option>
+            </select>
+            <div class="oneRow">
+                <div data-dojo-type="dijit/form/CheckBox" id="Lacoste"></div>
+                <label id="lacoste" for="Lacoste">Lacoste</label>
+            </div>
+            <select name="select2" id="selectSizeLacoste" data-dojo-type="dijit/form/Select">
+                <option value="small" selected="selected">small</option>
+                <option value="large">large</option>
+            </select>
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-props="title: 'Women'" id="women">bbbbbbb
+        </div>
+        <div data-dojo-type="dijit/layout/ContentPane"
+             data-dojo-props="title: 'Kids'">
+             <input id="checkBox" /> <label for="checkBox">I agree</label>
+        </div>
+    </div>
+</div>
+<div data-dojo-type="dijit/layout/ContentPane"
+     data-dojo-props="region: 'right'"></div>
+<div data-dojo-type="dijit/layout/ContentPane"
+     data-dojo-props="region: 'bottom'">
+    <div data-dojo-type="dijit/form/HorizontalSlider"></div>
+</div>
+<script>
+var testt = document.getElementById("Mike");
+if(testt.checked){
+	alert("the box is checked");
+}else{
+	alert("the box is not checked");
+}</script>
 </body>
 </html>
