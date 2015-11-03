@@ -16,105 +16,138 @@
 	};
 </script>
 <script>
-
-function asdf(){	
-	var glob = '';
-	glob = document.getElementById("selectSizeAdidas").selectedIndex;
-	return glob;
-}
+	function asdf() {
+		var glob = '';
+		glob = document.getElementById("selectSizeAdidas").selectedIndex;
+		return glob;
+	}
 </script>
 <script src="webjars/dojo-src/1.10.0/dojo/dojo.js"></script>
 <script>
 	require([ 'dojo/parser', 'app/views/First', 'dijit/layout/BorderContainer' ]);
 </script>
 <script>
-	var testt = document.getElementById("Mike");
+	var testt = document.getElementById("Nike");
 	require([ "dijit/form/CheckBox", "dojo/dom", "dojo/domReady!" ], function(
 			CheckBox, dom) {
 		var checkBox2 = new CheckBox({
 			name : "Adidas",
 		}, "Adidas").startup();
-		
+
 		var checkBox3 = new CheckBox({
 			name : "Nike",
 		}, "Nike").startup();
-		
+
 		var checkBox3 = new CheckBox({
 			name : "Puma",
 		}, "Puma").startup();
-		
+
 		var checkBox3 = new CheckBox({
 			name : "Lacoste",
 		}, "Lacoste").startup();
-		
-		
-		
-		
-		
 
 		var checkBox = new CheckBox({
 			name : "checkBox",
 			value : "agreed",
 			checked : false,
 			onChange : function(b) {
-				var node = dom.byId("women");
-				node.innerHTML = "hehehe";
-				if (testt.checked) {
-					alert("MUHAHAHA");
+				
+				if (this.checked) {
+					var node = dom.byId("women");
+					node.innerHTML = "women changed on checked";
+					alert('onChange called with parameter = ' + b
+							+ ', and WOMEN tab has value: ' + node.innerHTML);
 				}
-				alert('onChange called with parameter = ' + b
-						+ ', and WOMEN tab has value: ' + node.innerHTML);
+				else{
+					var node = dom.byId("women");
+					node.innerHTML = "women changed on unchecked";
+					alert('onChange called with parameter = ' + b
+							+ ', and WOMEN tab has value: ' + node.innerHTML);
+				}
+				
 			}
 		}, "checkBox").startup();
 	});
 </script>
 <script>
-require(["dijit/form/Button", "dojo/dom","dijit/registry", "dojo/domReady!"], function(Button, dom){
+	require(
+			[ "dijit/form/Button", "dojo/dom", "dijit/registry",
+					"dojo/domReady!" ],
+			function(Button, dom) {
 
-	var nikeSize = document.getElementById("selectSizeNike");
-	var nikeSizeValue = nikeSize.options[nikeSize.selectedIndex].value;
-	
-	var pumaSize = document.getElementById("selectSizePuma");
-	var pumaSizeValue = pumaSize.options[pumaSize.selectedIndex].value;
-	
-	var lacosteSize = document.getElementById("selectSizeLacoste");
-	var lacosteSizeValue = lacosteSize.options[lacosteSize.selectedIndex].value;
-	
-	var adidas = document.getElementById("Adidas");
-	var nike = document.getElementById("Nike");
-	var puma = document.getElementById("Puma");
-	var lacoste = document.getElementById("Lacoste");
-	var sizeAdidas = document.getElementById("selectSizeAdidas");
-	var vall = document.getElementById("justSelect");
-	var vall2 = vall.options[vall.selectedIndex].value;
-	var a = 5;
-    // Create a button programmatically:
-    var myButton = new Button({
-        label: "Click me!",
-        name: "button",
-        onClick: function(){
-        	vall = document.getElementById("justSelect");
-        	vall2 = vall.options[vall.selectedIndex].value;
-        	if(vall2=="WA"){
-        		alert("it's washington");
-        	}
-        	else{
-        		alert("it's not washington");
-        	}
-        }
-    }, "button").startup();
-});
+				var nikeSize = document.getElementById("selectSizeNike");
+				var nikeSizeValue = nikeSize.options[nikeSize.selectedIndex].value;
+
+				var pumaSize = document.getElementById("selectSizePuma");
+				var pumaSizeValue = pumaSize.options[pumaSize.selectedIndex].value;
+
+				var lacosteSize = document.getElementById("selectSizeLacoste");
+				var lacosteSizeValue = lacosteSize.options[lacosteSize.selectedIndex].value;
+
+				var adidas = document.getElementById("Adidas");
+				var nike = document.getElementById("Nike");
+				var puma = document.getElementById("Puma");
+				var lacoste = document.getElementById("Lacoste");
+				var sizeAdidas = document.getElementById("selectSizeAdidas");
+				vall = dom.byId("justSelect");
+				vall2 = this.vall.options[this.vall.selectedIndex].value;
+				
+				function checkIfChecked(brand){
+					var brands = '';
+					for (i = 0; i < brand.length; i++) { 
+					    if(brand[i].checked){
+					    	brands += "<div>"+  brand[i].name+" is checked </div>"
+					    }else{
+					    	brands +="<div>"+ brand[i].name+" is unchecked </div>"
+					    };
+					}
+					return brands;
+				}
+				// Create a button programmatically:
+				var myButton = new Button({
+					label : "Click me!",
+					name : "button",
+					onClick : function() {
+					    var selectedNode = sizeAdidas.options[sizeAdidas.selectedIndex].name;
+					    alert(selectedNode);
+						var brands = [adidas, nike, puma, lacoste];
+						dom.byId("results").innerHTML=checkIfChecked(brands);
+					}
+				}, "button").startup();
+			});
 </script>
-
+<script>
+require([
+         "dojo/ready",
+         "dijit/form/HorizontalSlider",
+         "dojo/dom", // for inserting value in TextBox example
+         "dijit/form/TextBox", // this we only include to make an example with TextBox
+         "dojo/parser" // parser because of TextBox decoration
+     ], function(ready, HorizontalSlider, dom){
+         ready(function(){
+             var slider = new HorizontalSlider({
+                 name: "slider",
+                 value: 5,
+                 minimum: -10,
+                 maximum: 10,
+                 discreteValues: 10,
+                 intermediateChanges: true,
+                 style: "width:300px;",
+                 onChange: function(value){
+                     dom.byId("sliderValue").value = value;
+                 }
+             }, "slider");
+         });
+     });</script>
 <title>Insert title here</title>
 </head>
 <body class="claro">
-
-	<div data-dojo-type="app/views/First"
-		data-dojo-props="title: 'Ours some widget'"></div>
 	<div data-dojo-type="dijit/layout/BorderContainer" id="mainContainer">
 		<div data-dojo-type="dijit/layout/ContentPane"
-			data-dojo-props="region: 'top'">TOP</div>
+			data-dojo-props="region: 'top'">
+			<div data-dojo-type="app/views/First"
+				data-dojo-props="title: 'Ours some widget'"></div>
+		</div>
 		<div data-dojo-type="dijit/layout/AccordionContainer"
 			data-dojo-props="region: 'left'">
 			<div data-dojo-type="dijit/layout/ContentPane"
@@ -125,14 +158,14 @@ require(["dijit/form/Button", "dojo/dom","dijit/registry", "dojo/domReady!"], fu
 				</div>
 				<select name="select1" id="selectSizeAdidas"
 					data-dojo-type="dijit/form/Select">
-					
-					<option value="small"  id="adidasSmall">small</option>
-<option value="large">large</option>
-					
+
+					<option value="small" id="adidasSmall">small</option>
+					<option value="large">large</option>
+
 				</select>
 				<div class="oneRow">
-					<input data-dojo-type="dijit/form/CheckBox"
-						id="Nike"> <label id="nike" for="Nike">Nike</label>
+					<input data-dojo-type="dijit/form/CheckBox" id="Nike"> <label
+						id="nike" for="Nike">Nike</label>
 				</div>
 				<select name="select1" id="selectSizeNike"
 					data-dojo-type="dijit/form/Select">
@@ -140,8 +173,8 @@ require(["dijit/form/Button", "dojo/dom","dijit/registry", "dojo/domReady!"], fu
 					<option value="large">large</option>
 				</select>
 				<div class="oneRow">
-					<input data-dojo-type="dijit/form/CheckBox" id="Puma">
-					<label id="puma" for="Puma">Puma</label>
+					<input data-dojo-type="dijit/form/CheckBox" id="Puma"> <label
+						id="puma" for="Puma">Puma</label>
 				</div>
 				<select name="select1" id="selectSizePuma"
 					data-dojo-type="dijit/form/Select">
@@ -150,15 +183,15 @@ require(["dijit/form/Button", "dojo/dom","dijit/registry", "dojo/domReady!"], fu
 					<option value="large">large</option>
 				</select>
 				<div class="oneRow">
-					<input data-dojo-type="dijit/form/CheckBox" id="Lacoste">
-					<label id="lacoste" for="Lacoste">Lacoste</label>
+					<input data-dojo-type="dijit/form/CheckBox" id="Lacoste"> <label
+						id="lacoste" for="Lacoste">Lacoste</label>
 				</div>
 				<select name="select2" id="selectSizeLacoste"
 					data-dojo-type="dijit/form/Select">
 					<option value="small" selected="selected">small</option>
 					<option value="large">large</option>
-				</select>
-				<input type="button" data-dojo-type="dijit/form/Button" id="button" label="butonche">
+				</select> <input type="button" data-dojo-type="dijit/form/Button" id="button"
+					label="butonche">
 			</div>
 			<div data-dojo-type="dijit/layout/ContentPane"
 				data-dojo-props="title: 'Women'" id="women">bbbbbbb</div>
@@ -167,20 +200,28 @@ require(["dijit/form/Button", "dojo/dom","dijit/registry", "dojo/domReady!"], fu
 				<input id="checkBox" /> <label for="checkBox">I agree</label>
 			</div>
 		</div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props="region: 'center'"><div id="slider"></div>
+<p><input type="text" id="sliderValue" data-dojo-type="dijit/form/TextBox" /></p>
+<div id="results"></div>
+			</div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props="region: 'right'"></div>
+		<div data-dojo-type="dijit/layout/ContentPane"
+			data-dojo-props="region: 'bottom'">
+			<div data-dojo-type="dijit/form/HorizontalSlider"></div>
+		</div>
 	</div>
-	<div data-dojo-type="dijit/layout/ContentPane"
-		data-dojo-props="region: 'right'"></div>
-	<div data-dojo-type="dijit/layout/ContentPane"
-		data-dojo-props="region: 'bottom'">
-		<div data-dojo-type="dijit/form/HorizontalSlider"></div>
-	</div>
-	<select name="select1" data-dojo-type="dijit/form/Select" id="justSelect">
-    <option value="TN">Tennessee</option>
-    <option value="VA">Virginia</option>
-    <option value="WA">Washington</option>
-    <option value="FL">Florida</option>
-    <option value="CA">California</option>
-</select>
+
+
+	<select name="select1" data-dojo-type="dijit/form/Select"
+		id="justSelect">
+		<option value="TN">Tennessee</option>
+		<option value="VA">Virginia</option>
+		<option value="WA">Washington</option>
+		<option value="FL">Florida</option>
+		<option value="CA">California</option>
+	</select>
 </body>
 
 </html>
